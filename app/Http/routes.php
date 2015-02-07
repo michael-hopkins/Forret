@@ -10,17 +10,3 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::group(['namespace' => '\Forret\Http\Controllers'],function(){
-    Route::get('/', 'WelcomeController@index');
-
-    Route::get('home', 'HomeController@index');
-
-    Route::controllers([
-        'auth' => 'Auth\AuthController',
-        'password' => 'Auth\PasswordController',
-    ]);
-});
-
-Route::group(['prefix' => 'admin','namespace' => '\Forret\Http\Controllers\Admin'],function(){
-    Route::get('/', 'WelcomeController@index');
-});

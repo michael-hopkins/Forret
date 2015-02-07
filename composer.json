@@ -3,16 +3,14 @@
 	"description": "The Laravel Framework.",
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
+	"type": "project",
 	"require": {
-		"laravel/framework": "~5.0",
-      "barryvdh/laravel-ide-helper": "1.11.*@dev",
-      "barryvdh/laravel-debugbar": "1.8.*@dev",
-      "laracasts/validation": "~1.0",
-      "fzaninotto/faker": "1.*"
-    },
-	"require-dev": {
-		"phpunit/phpunit": "~4.0",
-		"phpspec/phpspec": "~2.1"
+		"laravel/framework": "5.0.*",
+		"way/generators": "~3.0",
+		"fzaninotto/faker": "~1.4",
+		"barryvdh/laravel-ide-helper": "~2.0",
+		"barryvdh/laravel-debugbar": "~2.0",
+		"codeception/codeception": "2.0.10.1"
 	},
 	"autoload": {
 		"classmap": [
@@ -21,11 +19,6 @@
 		"psr-4": {
 			"Forret\\": "app/"
 		}
-	},
-	"autoload-dev": {
-		"classmap": [
-			"tests/TestCase.php"
-		]
 	},
 	"scripts": {
 		"post-install-cmd": [
@@ -43,6 +36,5 @@
 	},
 	"config": {
 		"preferred-install": "dist"
-	},
-	"minimum-stability": "dev"
+	}
 }

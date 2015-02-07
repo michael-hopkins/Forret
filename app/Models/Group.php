@@ -1,20 +1,30 @@
-<?php namespace Forret\Models;
+<?php
 
-use Illuminate\Database\Eloquent\Model;
+use Esensi\Model\Contracts\RelatingModelInterface;
+use Esensi\Model\Contracts\SoftDeletingModelInterface;
+use Esensi\Model\Contracts\ValidatingModelInterface;
+use Esensi\Model\Traits\RelatingModelTrait;
+use Esensi\Model\Traits\SoftDeletingModelTrait;
+use Esensi\Model\Traits\ValidatingModelTrait;
 
-/**
- * Forret\Models\Group
- *
- * @property-read \Illuminate\Database\Eloquent\Collection|\Forret\Models\User[] $users
- * @property-read \Illuminate\Database\Eloquent\Collection|\$related[] $morphedByMany
- */
-class Group extends Model
-{
+class Group extends Eloquent implements ValidatingModelInterface, SoftDeletingModelInterface, RelatingModelInterface{
+    use ValidatingModelTrait;
+    use SoftDeletingModelTrait;
+    use RelatingModelTrait;
 
+    protected $injectUniqueIdentifier = false;
+    protected $throwValidationExceptions = true;
     protected $guarded = ['id'];
+    protected $softDelete = true;
+    protected $table = 'groups';
+    protected $dates = ['delete_at'];
 
-    public function users()
-    {
-        return $this->belongsToMany('\Forret\Models\User');
-    }
+    protected $rulesets = [
+        'creating' => [],
+        'updating' => []
+    ];
+
+    protected $relationships = [
+        'groups' => ['belongsToMany','User','users_groups','group_id']
+    ];
 }

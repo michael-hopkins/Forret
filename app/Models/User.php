@@ -1,4 +1,4 @@
-<?php namespace Forret\Models;
+<?php namespace app;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -6,12 +6,6 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
-/**
- * Forret\Models\User
- *
- * @property-read \Illuminate\Database\Eloquent\Collection|\Forret\Models\Group[] $groups
- * @property-read \Illuminate\Database\Eloquent\Collection|\$related[] $morphedByMany
- */
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
 
@@ -37,9 +31,4 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
-
-    public function groups()
-    {
-        return $this->belongsToMany('\Forret\Models\Group');
-    }
 }
